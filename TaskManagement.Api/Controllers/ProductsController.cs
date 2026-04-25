@@ -73,5 +73,11 @@ namespace TaskManagement.Api.Controllers
             }
             return Ok($"Product with ID {id} deleted successfully");
         }
+        [HttpGet("/Search")]
+        public async Task<IActionResult> Search([FromQuery] GetProductBySearch query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
